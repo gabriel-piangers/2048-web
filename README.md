@@ -10,4 +10,5 @@ D -> moves the board to the right  <br>
 
 This simple project helped me pratice my web development skills, as well as some basic programming logic in JavaScript.
 
-I learned a about react states, components, useEffects and detecting keyboard inputs. Also practiced handling multidemsional arrays and using the Set built-in data structure in JavaScript.
+I learned a about react states, components, useEffects and detecting keyboard inputs. Practiced handling multidemsional arrays and using the Set built-in data structure in JavaScript. Also learned about CSS basic animations and transitions.
+
