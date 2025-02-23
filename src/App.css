@@ -17,6 +17,24 @@
   text-shadow: 0 0 3px rgb(71, 71, 71);
 }
 
+.start-container {
+  display: flex;
+  width: 100%;
+}
+
+.start-button {
+  margin: auto;
+  background-color: rgb(226, 202, 93);
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  box-shadow: 1px 1px 3px ;
+}
+
+.start-button:hover {
+  cursor: pointer;
+  background-color: rgb(230, 209, 115);
+}
+
 .grid-container {
   width: 100%;
   display: flex;

@@ -8,12 +8,12 @@ export function addRandomBox(grid, setGrid) {
         }
     }
     const rngBox = emptySpots[Math.floor(Math.random() * emptySpots.length)];
-    const rngValue = Math.random() > 0.5 ? 4 : 2;
+    const rngValue = Math.random() > 0.65 ? 4 : 2;
     let newGrid = grid.slice()
     newGrid[rngBox[0]][rngBox[1]] = rngValue;
     setGrid(newGrid)
-
   }
+
 
  export function updateGrid(grid, setGrid, key) {
 
@@ -103,7 +103,7 @@ export function addRandomBox(grid, setGrid) {
           let k = i-1;
           while (k >= 0) {
             if (newGrid[k][col] !== 0) {
-              if (newGrid[k][col] === newGrid[i][col]) {
+              if (newGrid[k][col] === newGrid[i][col] && !alreadyCombined.has(`${k}, ${col}`)) {
                 alreadyCombined.add(`${k}, ${col}`)
                 break
               } else {
@@ -141,7 +141,7 @@ export function addRandomBox(grid, setGrid) {
           let k = i+1;
           while (k < 4) {
             if (newGrid[k][col] !== 0) {
-              if (newGrid[k][col] === newGrid[i][col]) {
+              if (newGrid[k][col] === newGrid[i][col] && !alreadyCombined.has(`${k}, ${col}`)) {
                 alreadyCombined.add(`${k}, ${col}`)
                 break
               } else {

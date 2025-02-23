@@ -8,6 +8,8 @@ export function Grid() {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ]);
+  
+  const [running, setRunning] = useState(false)
 
   useEffect(() => {
     const keyDown = (event) => {
@@ -54,26 +56,39 @@ export function Grid() {
     }
   }
 
-  return (
-    <div className="grid">
-      {grid.map((row, index) => {
-        return (
-          <div key={index} className="grid-row">
-            {row.map((box, index) => {
-              return (
-                <div key={index} className={`grid-box ${box===0 && "empty-box"}`} 
-                style={{
-                  backgroundColor: getBoxColor(box)
-                }}>
-                  <div className={"box-value"}                 style={{
-                  backgroundColor: getBoxColor(box)
-                }}>{box!==0 ? box : ''}</div>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
-    </div>
-  );
+  if (running) {
+    return (
+      <div className="grid">
+        {grid.map((row, index) => {
+          return (
+            <div key={index} className="grid-row">
+              {row.map((box, index) => {
+                return (
+                  <div key={index} className={`grid-box ${box===0 && "empty-box"}`} 
+                  style={{
+                    backgroundColor: getBoxColor(box)
+                  }}>
+                    <div className={"box-value"}                 style={{
+                    backgroundColor: getBoxColor(box)
+                  }}>{box!==0 ? box : ''}</div>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div className="start-container">
+        <button className="start-button" onClick={() => {
+          addRandomBox(grid, setGrid);
+          addRandomBox(grid, setGrid);
+          setRunning(true)
+        }}>Start game</button>
+      </div>
+    )
+  }
+  
 }
