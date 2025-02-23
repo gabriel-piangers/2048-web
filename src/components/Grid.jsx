@@ -71,7 +71,11 @@ export function Grid() {
 
   if (running) {
     return (
-     <div className="grid-container">
+     <div className="grid-container" style={{
+      width: (defeat ? '60%' : ''),
+      maxWidth: (defeat ? '600px' : '')
+      
+     }}>
        <div className="defeat-container" style={{
         opacity: (defeat ? 100 : 0)
       }}>

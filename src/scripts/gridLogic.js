@@ -8,7 +8,7 @@ export function addRandomBox(grid, setGrid) {
     }
   }
   const rngBox = emptySpots[Math.floor(Math.random() * emptySpots.length)];
-  const rngValue = Math.random() > 0.65 ? 4 : 2;
+  const rngValue = Math.random() > 0.7 ? 4 : 2;
   let newGrid = grid.slice();
   newGrid[rngBox[0]][rngBox[1]] = rngValue;
   setGrid(newGrid);
