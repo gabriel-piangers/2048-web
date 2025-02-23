@@ -15,7 +15,9 @@ export function Grid() {
 
   const [score, setScore] = useState(0);
 
-  const [highScore, setHighScore] = useState(JSON.parse(localStorage.getItem('highScore')) || 0)
+  const [highScore, setHighScore] = useState(
+    JSON.parse(localStorage.getItem("highScore")) || 0
+  );
 
   useEffect(() => {
     const keyDown = (event) => {
@@ -32,11 +34,11 @@ export function Grid() {
   });
 
   useEffect(() => {
-    if(score > highScore) {
-      setHighScore(score)
-      localStorage.setItem('highScore', JSON.stringify(score))
+    if (score > highScore) {
+      setHighScore(score);
+      localStorage.setItem("highScore", JSON.stringify(score));
     }
-  }, [defeat])
+  }, [defeat]);
 
   function getBoxColor(x) {
     switch (x) {
@@ -71,89 +73,98 @@ export function Grid() {
 
   if (running) {
     return (
-     <div className="grid-container" style={{
-      width: (defeat ? '60%' : ''),
-      maxWidth: (defeat ? '600px' : '')
-      
-     }}>
-       <div className="defeat-container" style={{
-        opacity: (defeat ? 100 : 0)
-      }}>
-        <div className="defeat-message">
-          Game Over
+      <div className="game-container">
+        <div
+          className="gameover-container"
+          style={{
+            opacity: defeat ? 100 : 0,
+          }}
+        >
+          <div className="gameover-message">Game Over</div>
+        </div>
+
+        <div className={`grid-container ${defeat && "grid-defeat"}`}>
+          <div className="score-display">
+            <div className="score-txt">
+              Score: <span className="score">{score}</span>
+            </div>
+
+            <div className="score-txt">
+              HighScore: <span className="score">{highScore}</span>
+            </div>
+          </div>
+
+          <div className={`grid`}>
+            {grid.map((row, index) => {
+              return (
+                <div key={index} className="grid-row">
+                  {row.map((box, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`grid-box ${box === 0 && "empty-box"}`}
+                        style={{
+                          backgroundColor: getBoxColor(box),
+                        }}
+                      >
+                        <div
+                          className={"box-value"}
+                          style={{
+                            backgroundColor: getBoxColor(box),
+                          }}
+                        >
+                          {box !== 0 ? box : ""}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div
+          className="button-container"
+          style={{
+            opacity: defeat ? 100 : 0,
+          }}
+        >
+          <button
+            className="button play-again-button"
+            onClick={() => {
+              let newGrid = [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+              ];
+              newGrid = addRandomBox(newGrid, setGrid);
+              addRandomBox(newGrid, setGrid);
+              setScore(0);
+              setDefeat(false);
+            }}
+          >
+            Play again
+          </button>
         </div>
       </div>
-       
-      <div className="score-display">
-      <div>
-      Score: <span className="score">{score}</span>
-      </div>
-
-      <div>
-        HighScore: <span className="score">{highScore}</span>
-      </div>
-      </div>
-
-       <div className="grid">
-        {grid.map((row, index) => {
-          return (
-            <div key={index} className="grid-row">
-              {row.map((box, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={`grid-box ${box === 0 && "empty-box"}`}
-                    style={{
-                      backgroundColor: getBoxColor(box),
-                    }}
-                  >
-                    <div
-                      className={"box-value"}
-                      style={{
-                        backgroundColor: getBoxColor(box),
-                      }}
-                    >
-                      {box !== 0 ? box : ""}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="button-container">
-        <button className="button" style={{
-          opacity: (defeat ? 100 : 0)
-        }} onClick={() => {
-          let newGrid = [
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-          ]
-          newGrid = addRandomBox(newGrid, setGrid);
-          addRandomBox(newGrid, setGrid);
-          setScore(0)
-          setDefeat(false)
-        }}>Play again</button>
-      </div>
-     </div>
     );
   } else {
     return (
-      <div className="button-container">
-        <button
-          className="button"
-          onClick={() => {
-            addRandomBox(grid, setGrid);
-            addRandomBox(grid, setGrid);
-            setRunning(true);
-          }}
-        >
-          Start game
-        </button>
+      <div className="game-container">
+        <div className="button-container">
+          <button
+            className="button"
+            onClick={() => {
+              addRandomBox(grid, setGrid);
+              addRandomBox(grid, setGrid);
+              setRunning(true);
+            }}
+          >
+            Start game
+          </button>
+        </div>
       </div>
     );
   }

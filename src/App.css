@@ -1,3 +1,28 @@
+/* Animations  */
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 100;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 100;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +32,7 @@
 
 .header-title {
   color: rgb(180, 116, 76);
-  font-size: 3rem;
+  font-size: 4rem;
   padding: 1rem 2rem;
   text-align: center;
   font-weight: bold;
@@ -16,16 +41,15 @@
 
 .button-container {
   display: flex;
-  width: 100%;
-  padding: 2rem 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .button {
-  margin: auto;
   background-color: rgb(226, 202, 93);
   font-size: 2rem;
   padding: 1rem 2rem;
-  box-shadow: 1px 1px 3px ;
+  box-shadow: 1px 1px 5px rgb(139, 114, 77);
 }
 
 .button:hover {
@@ -36,6 +60,7 @@
 .game-container {
   margin-top: 4rem;
   display: flex;
+  flex-direction: column;
 }
 
 .grid-container {
@@ -43,6 +68,8 @@
   margin: auto;
   display: flex;
   flex-direction: column;
+  min-width: 600px;
+  transition: transform 1s;
 }
 
 .grid {
@@ -52,6 +79,11 @@
   border-radius: 2rem;
   padding: 1rem;
   background-color: rgb(131, 115, 90);
+  box-shadow: 8px 8px 30px rgb(139, 114, 77);
+}
+
+.grid-defeat {
+  transform: scale(0.8);
 }
 
 .grid-row {
@@ -59,25 +91,21 @@
   grid-template-columns: repeat(4, 1fr);
   background-color: rgb(131, 115, 90);
   border-radius: 2rem;
-
 }
 
 .grid-box {
-display: flex;
+  display: flex;
   aspect-ratio: 1 / 1;
   background-color: rgb(236, 236, 236);
-
   border-radius: 1rem;
   margin: 0.3rem;
-
 }
 
 .box-value {
-    background-color: rgb(236, 236, 236);
-    margin: auto;
-    font-size: 3rem;
-    font-weight: 500;
-    
+  background-color: rgb(236, 236, 236);
+  margin: auto;
+  font-size: 3rem;
+  font-weight: 500;
 }
 
 .empty-box {
@@ -89,25 +117,37 @@ display: flex;
   width: 100%;
   margin: auto;
   font-size: 2rem;
-  color: rgb(94, 85, 75);;
-  margin-bottom: 0.4rem;
+  color: rgb(94, 85, 75);
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
 }
 
-.score {
-  margin-left: 1rem;
-  font-size: 3rem;
+.score-txt {
+  background-color: rgb(207, 203, 177);
+  border-radius: 2rem;
+  padding: 0.2rem 1rem;
 }
 
-.defeat-container {
+.score {
+  margin-left: 0.5rem;
+  font-size: 3rem;
+  border-radius: 2rem;
+  background-color: rgb(207, 203, 177);
+}
+
+.gameover-container {
   display: flex;
 }
 
-.defeat-message {
+.gameover-message {
   font-size: 3rem;
   margin: auto;
-  margin-bottom: 1rem;
   color: rgb(94, 85, 75);
   font-weight: 500;
+  animation: slideInUp 1.5s ease;
+}
+
+.play-again-button {
+  animation: slideInDown 1.5s ease;
 }
