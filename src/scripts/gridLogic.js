@@ -12,6 +12,7 @@ export function addRandomBox(grid, setGrid) {
   let newGrid = grid.slice();
   newGrid[rngBox[0]][rngBox[1]] = rngValue;
   setGrid(newGrid);
+  return newGrid;
 }
 
 export function checkLose(grid) {
@@ -45,7 +46,9 @@ export function checkLose(grid) {
   }
 }
 
-export function updateGrid(grid, setGrid, key) {
+export function updateGrid(grid, setGrid, score, setScore, key) {
+  let newScore = score;
+
   if (key === "a") {
     let newGrid = grid.map((row) => [...row]);
     let alreadyCombined = new Set();
@@ -62,6 +65,7 @@ export function updateGrid(grid, setGrid, key) {
               !alreadyCombined.has(`${row}, ${k}`)
             ) {
               alreadyCombined.add(`${row}, ${k}`);
+              newScore += newGrid[row][k] * 2;
               break;
             } else {
               k++;
@@ -96,6 +100,7 @@ export function updateGrid(grid, setGrid, key) {
               !alreadyCombined.has(`${row}, ${k}`)
             ) {
               alreadyCombined.add(`${row}, ${k}`);
+              newScore += newGrid[row][k] * 2;
               break;
             } else {
               k--;
@@ -131,6 +136,7 @@ export function updateGrid(grid, setGrid, key) {
               !alreadyCombined.has(`${k}, ${col}`)
             ) {
               alreadyCombined.add(`${k}, ${col}`);
+              newScore += newGrid[k][col] * 2;
               break;
             } else {
               k++;
@@ -169,6 +175,7 @@ export function updateGrid(grid, setGrid, key) {
               !alreadyCombined.has(`${k}, ${col}`)
             ) {
               alreadyCombined.add(`${k}, ${col}`);
+              newScore += newGrid[k][col] * 2;
               break;
             } else {
               k--;
@@ -191,5 +198,5 @@ export function updateGrid(grid, setGrid, key) {
       addRandomBox(newGrid, setGrid);
     }
   }
-
+  setScore(newScore)
 }

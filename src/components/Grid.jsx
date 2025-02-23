@@ -13,10 +13,14 @@ export function Grid() {
 
   const [defeat, setDefeat] = useState(false);
 
+  const [score, setScore] = useState(0);
+
+  const [highScore, setHighScore] = useState(JSON.parse(localStorage.getItem('highScore')) || 0)
+
   useEffect(() => {
     const keyDown = (event) => {
       if (defeat === false && ["w", "a", "s", "d"].includes(event.key)) {
-        updateGrid(grid, setGrid, event.key);
+        updateGrid(grid, setGrid, score, setScore, event.key);
         setDefeat(checkLose(grid));
       }
     };
@@ -26,6 +30,13 @@ export function Grid() {
       document.removeEventListener("keydown", keyDown);
     };
   });
+
+  useEffect(() => {
+    if(score > highScore) {
+      setHighScore(score)
+      localStorage.setItem('highScore', JSON.stringify(score))
+    }
+  }, [defeat])
 
   function getBoxColor(x) {
     switch (x) {
@@ -69,6 +80,16 @@ export function Grid() {
         </div>
       </div>
        
+      <div className="score-display">
+      <div>
+      Score: <span className="score">{score}</span>
+      </div>
+
+      <div>
+        HighScore: <span className="score">{highScore}</span>
+      </div>
+      </div>
+
        <div className="grid">
         {grid.map((row, index) => {
           return (
@@ -97,13 +118,30 @@ export function Grid() {
           );
         })}
       </div>
+
+      <div className="button-container">
+        <button className="button" style={{
+          opacity: (defeat ? 100 : 0)
+        }} onClick={() => {
+          let newGrid = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ]
+          newGrid = addRandomBox(newGrid, setGrid);
+          addRandomBox(newGrid, setGrid);
+          setScore(0)
+          setDefeat(false)
+        }}>Play again</button>
+      </div>
      </div>
     );
   } else {
     return (
-      <div className="start-container">
+      <div className="button-container">
         <button
-          className="start-button"
+          className="button"
           onClick={() => {
             addRandomBox(grid, setGrid);
             addRandomBox(grid, setGrid);

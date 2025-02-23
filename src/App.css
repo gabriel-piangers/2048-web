@@ -5,24 +5,22 @@
   background-color: rgb(255, 248, 230);
 }
 
-.header {
-  margin-bottom: 2rem;
-}
-
 .header-title {
   color: rgb(180, 116, 76);
   font-size: 3rem;
+  padding: 1rem 2rem;
   text-align: center;
   font-weight: bold;
   text-shadow: 0 0 3px rgb(71, 71, 71);
 }
 
-.start-container {
+.button-container {
   display: flex;
   width: 100%;
+  padding: 2rem 0;
 }
 
-.start-button {
+.button {
   margin: auto;
   background-color: rgb(226, 202, 93);
   font-size: 2rem;
@@ -30,30 +28,35 @@
   box-shadow: 1px 1px 3px ;
 }
 
-.start-button:hover {
+.button:hover {
   cursor: pointer;
   background-color: rgb(230, 209, 115);
 }
 
+.game-container {
+  display: flex;
+}
+
 .grid-container {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
 
 .grid {
   margin: auto;
+  width: 100%;
   max-width: 800px;
-  width: 80%;
   border-radius: 10px;
   padding: 0.5rem;
-  background-color: rgb(145, 96, 23);
+  background-color: rgb(145, 117, 74);
 }
 
 .grid-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: rgb(145, 96, 23);
+  background-color: rgb(145, 117, 74);
 
 }
 
@@ -70,12 +73,29 @@ display: flex;
 .box-value {
     background-color: rgb(236, 236, 236);
     margin: auto;
-    font-size: 2rem;
+    font-size: 3rem;
+    font-weight: 500;
     
 }
 
 .empty-box {
   background-color: rgb(167, 140, 100);
+}
+
+.score-display {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  font-size: 2rem;
+  color: rgb(94, 85, 75);;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  margin-left: 1rem;
+  font-size: 3rem;
 }
 
 .defeat-container {
@@ -85,7 +105,7 @@ display: flex;
 .defeat-message {
   font-size: 3rem;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: rgb(94, 85, 75);
   font-weight: 500;
 }
