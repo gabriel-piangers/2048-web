@@ -38,6 +38,7 @@
 .grid-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .grid {
@@ -75,4 +76,16 @@ display: flex;
 
 .empty-box {
   background-color: rgb(167, 140, 100);
+}
+
+.defeat-container {
+  display: flex;
+}
+
+.defeat-message {
+  font-size: 3rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  color: rgb(94, 85, 75);
+  font-weight: 500;
 }

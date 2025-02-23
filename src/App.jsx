@@ -7,7 +7,7 @@ export function App() {
     <div>
       <Header/>
 
-      <div className="grid-container">
+      <div className="game-container">
         <Grid/>
       </div>
     </div>

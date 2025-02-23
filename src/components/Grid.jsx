@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addRandomBox, updateGrid } from "../scripts/gridLogic";
+import { addRandomBox, checkLose, updateGrid } from "../scripts/gridLogic";
 
 export function Grid() {
   const [grid, setGrid] = useState([
@@ -8,13 +8,16 @@ export function Grid() {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ]);
-  
-  const [running, setRunning] = useState(false)
+
+  const [running, setRunning] = useState(false);
+
+  const [defeat, setDefeat] = useState(false);
 
   useEffect(() => {
     const keyDown = (event) => {
-      if (["w", "a", "s", "d"].includes(event.key)) {
+      if (defeat === false && ["w", "a", "s", "d"].includes(event.key)) {
         updateGrid(grid, setGrid, event.key);
+        setDefeat(checkLose(grid));
       }
     };
     document.addEventListener("keydown", keyDown);
@@ -27,50 +30,66 @@ export function Grid() {
   function getBoxColor(x) {
     switch (x) {
       case 0:
-        return ""
+        return "";
       case 2:
-        return "#edf7f0"
+        return "#edf7f0";
       case 4:
-        return "#c7f0d3"
+        return "#c7f0d3";
       case 8:
-        return "#e6f5c1"
+        return "#e6f5c1";
       case 16:
-        return "#f5eec1"
+        return "#f5eec1";
       case 32:
-        return "#f5cf9d"
+        return "#f5cf9d";
       case 64:
-        return "#f7b052"
+        return "#f7b052";
       case 128:
-        return "#f7bca3"
+        return "#f7bca3";
       case 256:
-        return "#ff8b59"
+        return "#ff8b59";
       case 512:
-        return "#f75711"
+        return "#f75711";
       case 1024:
-        return "#fa4848"
+        return "#fa4848";
       case 2048:
-        return "#ff1c1c"
+        return "#ff1c1c";
       default:
-        return "#ff1c1c"
-      
+        return "#ff1c1c";
     }
   }
 
   if (running) {
     return (
-      <div className="grid">
+     <div className="grid-container">
+       <div className="defeat-container" style={{
+        opacity: (defeat ? 100 : 0)
+      }}>
+        <div className="defeat-message">
+          Game Over
+        </div>
+      </div>
+       
+       <div className="grid">
         {grid.map((row, index) => {
           return (
             <div key={index} className="grid-row">
               {row.map((box, index) => {
                 return (
-                  <div key={index} className={`grid-box ${box===0 && "empty-box"}`} 
-                  style={{
-                    backgroundColor: getBoxColor(box)
-                  }}>
-                    <div className={"box-value"}                 style={{
-                    backgroundColor: getBoxColor(box)
-                  }}>{box!==0 ? box : ''}</div>
+                  <div
+                    key={index}
+                    className={`grid-box ${box === 0 && "empty-box"}`}
+                    style={{
+                      backgroundColor: getBoxColor(box),
+                    }}
+                  >
+                    <div
+                      className={"box-value"}
+                      style={{
+                        backgroundColor: getBoxColor(box),
+                      }}
+                    >
+                      {box !== 0 ? box : ""}
+                    </div>
                   </div>
                 );
               })}
@@ -78,17 +97,22 @@ export function Grid() {
           );
         })}
       </div>
+     </div>
     );
   } else {
     return (
       <div className="start-container">
-        <button className="start-button" onClick={() => {
-          addRandomBox(grid, setGrid);
-          addRandomBox(grid, setGrid);
-          setRunning(true)
-        }}>Start game</button>
+        <button
+          className="start-button"
+          onClick={() => {
+            addRandomBox(grid, setGrid);
+            addRandomBox(grid, setGrid);
+            setRunning(true);
+          }}
+        >
+          Start game
+        </button>
       </div>
-    )
+    );
   }
-  
 }
