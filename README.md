@@ -1,8 +1,13 @@
-# React + Vite
+# 2048 using react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The classic 2048 game, made using JavaScript and React
 
-Currently, two official plugins are available:
+Game controsl:  <br>
+W -> moves the board upwards <br>
+A -> moves the board to the left  <br>
+S -> moves the board downwards  <br>
+D -> moves the board to the right  <br>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This simple project helped me pratice my web development skills, as well as some basic programming logic in JavaScript.
+
+I learned a about react states, components, useEffects and detecting keyboard inputs. Also practiced handling multidemsional arrays and using the Set built-in data structure in JavaScript.
