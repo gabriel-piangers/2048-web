@@ -1,3 +1,21 @@
+/* Utility Classes */
+
+.animate {
+  animation-duration: 1s;
+}
+
+.animate.animate-fast {
+  animation-duration: 0.5s;
+}
+
+.animate.popIn {
+  animation-name: popIn;
+}
+
+.invisible{
+  opacity: 0;
+}
+
 /* Animations  */
 
 @keyframes slideInUp {
@@ -20,6 +38,15 @@
   to {
     transform: translateY(0);
     opacity: 100;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
@@ -98,7 +125,6 @@
   aspect-ratio: 1 / 1;
   background-color: rgb(236, 236, 236);
   border-radius: 1rem;
-  margin: 0.3rem;
 }
 
 .box-value {
@@ -110,6 +136,9 @@
 
 .empty-box {
   background-color: rgb(187, 167, 137);
+  box-shadow: 1px 1px 5px inset;
+  border-radius: 1rem;
+  margin: 0.3rem;
 }
 
 .score-display {

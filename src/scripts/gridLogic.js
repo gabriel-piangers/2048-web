@@ -1,3 +1,5 @@
+export let newBox = [-1, -1]
+
 export function addRandomBox(grid, setGrid) {
   const emptySpots = [];
   for (let row = 0; row < 4; row++) {
@@ -12,6 +14,7 @@ export function addRandomBox(grid, setGrid) {
   let newGrid = grid.slice();
   newGrid[rngBox[0]][rngBox[1]] = rngValue;
   setGrid(newGrid);
+  newBox = [rngBox[0], rngBox[1]]
   return newGrid;
 }
 

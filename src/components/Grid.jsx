@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addRandomBox, checkLose, updateGrid } from "../scripts/gridLogic";
+import { addRandomBox, checkLose, updateGrid, newBox } from "../scripts/gridLogic";
 
 export function Grid() {
   const [grid, setGrid] = useState([
@@ -95,14 +95,14 @@ export function Grid() {
           </div>
 
           <div className={`grid`}>
-            {grid.map((row, index) => {
+            {grid.map((row, rowIndex) => {
               return (
-                <div key={index} className="grid-row">
-                  {row.map((box, index) => {
+                <div key={rowIndex} className="grid-row">
+                  {row.map((box, boxIndex) => {
                     return (
-                      <div
-                        key={index}
-                        className={`grid-box ${box === 0 && "empty-box"}`}
+                      <div key={boxIndex} className="empty-box">
+                        <div
+                        className={`grid-box ${box === 0 && "invisible"} ${rowIndex === newBox[0] && boxIndex === newBox[1] ? 'animate animate-fast popIn' : ''}`}
                         style={{
                           backgroundColor: getBoxColor(box),
                         }}
@@ -115,6 +115,7 @@ export function Grid() {
                         >
                           {box !== 0 ? box : ""}
                         </div>
+                      </div>
                       </div>
                     );
                   })}
