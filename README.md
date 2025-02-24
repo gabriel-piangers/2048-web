@@ -2,7 +2,9 @@
 
 The classic 2048 game, made using JavaScript and React
 
-Game controsl:  <br>
+[Try it out!](2048-web.vercel.app)
+
+Game controls:  <br>
 W -> moves the board upwards <br>
 A -> moves the board to the left  <br>
 S -> moves the board downwards  <br>
