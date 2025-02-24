@@ -51,6 +51,7 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Funnel Display", serif;
@@ -59,8 +60,8 @@
 
 .header-title {
   color: rgb(180, 116, 76);
-  font-size: 4rem;
-  padding: 1rem 2rem;
+  font-size: min(4rem, 8vh);
+
   text-align: center;
   font-weight: bold;
   text-shadow: 0 0 3px rgb(71, 71, 71);
@@ -74,8 +75,8 @@
 
 .button {
   background-color: rgb(226, 202, 93);
-  font-size: 2rem;
-  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
   box-shadow: 1px 1px 5px rgb(139, 114, 77);
 }
 
@@ -85,24 +86,22 @@
 }
 
 .game-container {
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
 }
 
 .grid-container {
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
-  min-width: 600px;
   transition: transform 1s;
 }
 
 .grid {
   margin: auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   border-radius: 2rem;
   padding: 1rem;
   background-color: rgb(131, 115, 90);
@@ -130,7 +129,7 @@
 .box-value {
   background-color: rgb(236, 236, 236);
   margin: auto;
-  font-size: 3rem;
+  font-size: min(6vw, 2.5rem);
   font-weight: 500;
 }
 
@@ -142,10 +141,10 @@
 }
 
 .score-display {
-  max-width: 800px;
+  max-width: 600px;
   width: 100%;
   margin: auto;
-  font-size: 2rem;
+  font-size: 1rem;
   color: rgb(94, 85, 75);
   margin-bottom: 1rem;
   display: flex;
@@ -160,7 +159,7 @@
 
 .score {
   margin-left: 0.5rem;
-  font-size: 3rem;
+  font-size: 2rem;
   border-radius: 2rem;
   background-color: rgb(207, 203, 177);
 }
@@ -170,7 +169,7 @@
 }
 
 .gameover-message {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: auto;
   color: rgb(94, 85, 75);
   font-weight: 500;
