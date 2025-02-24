@@ -153,7 +153,7 @@ export function Grid() {
     );
   } else {
     return (
-      <div className="game-container">
+      <div className="game-container start-button">
         <div className="button-container">
           <button
             className="button"
