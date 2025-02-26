@@ -2,15 +2,21 @@
 
 The classic 2048 game, made using JavaScript and React
 
-[Try it out!](https://2048-web.vercel.app/)
+[Play Now](https://2048-web.vercel.app/)
 
-Game controls:  <br>
-W -> moves the board upwards <br>
-A -> moves the board to the left  <br>
-S -> moves the board downwards  <br>
-D -> moves the board to the right  <br>
+## Game controls:  <br>
+W -> Move up <br>
+A -> Move left  <br>
+S -> Move down  <br>
+D -> Move right  <br>
 
-This simple project helped me pratice my web development skills, as well as some basic programming logic in JavaScript.
+## About this project
+This project served as a hands-on way to enhance my web development skills while reinforcing fundamental programming concepts in JavaScript.
 
-I learned a about react states, components, useEffects and detecting keyboard inputs. Practiced handling multidemsional arrays and using the Set built-in data structure in JavaScript. Also learned about CSS basic animations and transitions.
-
+### What I learned
+* Managing state and components in React
+* Using useEffect for side effects
+* Handling keyboard inputs
+* Working with multidimensional arrays
+* Utilizing the Set data structure in JavaScript
+* Implementing CSS animations and transitions
